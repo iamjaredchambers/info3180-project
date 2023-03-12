@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+
+
+<h1 class = "title"> Properties 
+
+</h1>
+
+<div class = "images">
+    <li class = "listproperties">
+        <ul class = "property_photos">
+            {% for  property in properties %}
+            <div class = "properties">
+                {{ property.csrf_token }}
+                <img src = "{{ url_for('get_uploaded_images', filename = property.photo) }}" />
+                <p class = "title">{{property.propertyTitle}}</p>
+                <p class = "location"> {{property.location}}</p>
+                <p class = "price"> {{property.price}}</p> <br>
+                <a href = "{{url_for('view_properties', property_id = prop)}}" class = "viewproperty"> View Property Here!</a>
+
+            </div>
+            {% endfor %}
+                
+               
+        </ul>
+   
+    </li>
+  
+</div>
+
+{% endblock %}
+
+
