@@ -35,6 +35,7 @@ def properties():
    form = PropertyForm()
     
    if request.method == "POST":
+       if form.validate_on_submit():
         propertyTitle = request.form['propertyTitle']
         description = request.form['description']
         numberofrooms = request.form['numberofrooms']
@@ -64,7 +65,7 @@ def properties():
     
 @app.route('/properties')
 def property():
-    properties  = PropertyProfile.query.all()
+    properties  = db.session.execute(db.select(PropertyProfile)).scalars()
     return render_template("properties.html", properties = properties)
 
 def get_images():
@@ -77,10 +78,11 @@ def get_images():
         return filelist
 
 @app.route('/properties/<property_id>')
+
 def view_properties(property_id):
     property_id = int(property_id)
     prop = db.session.execute(db.select(PropertyProfile).filter_by(id=property_id)).scalar_one()
-    return render_template('propertyview.html', property=prop)
+    return render_template('propertyview.html', property = prop)
 
 @app.route('/upload/<filename>')
 def get_uploaded_images(filename):

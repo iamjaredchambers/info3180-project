@@ -23,6 +23,9 @@ class PropertyProfile(db.Model):
               self.price = price
               self.filename = filename
        
+       def __repr__(self):
+        return '<Property %r>' % (self.propertyTitle)
+       
        
        
        

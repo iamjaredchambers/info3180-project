@@ -1,11 +1,12 @@
-{% extends 'base.html' %} {% block main %}
+{% extends 'base.html' %} 
+{% block main %}
 
 <div class="row">
   <div class="col-lg">
     <div class="card mb-3">
       <div class="row card-body">
         <img class="col-sm-6"
-        <img src = "{{ url_for('get_uploaded_images', filename = property.photo) }}"/>
+        src = "{{ url_for('get_uploaded_images', filename = property.filename) }}"/>
         <div class="col-sm-6">
           <h5 class="card-title"><p>{{property.title}}</p></h5>
           <span class="badge rounded-pill bg-primary"><p class="card-text">{{property.price}}</p></span   >
