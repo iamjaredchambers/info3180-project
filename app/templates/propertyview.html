@@ -8,14 +8,18 @@
         <img class="col-sm-6"
         src = "{{ url_for('get_uploaded_images', filename = property.filename) }}"/>
         <div class="col-sm-6">
-          <h5 class="card-title"><p>{{property.title}}</p></h5>
-          <span class="badge rounded-pill bg-primary"><p class="card-text">{{property.price}}</p></span   >
-          <span><p class="card-text">{{property.propertyType}}</p></span
-          >
-          <p class="card-text">{{property.description}}</p>
-          <span><p class="card-text"><img class="icon" src="{{url_for('static', filename='bed_icon.png') }}" />{{property.numberofrooms}}</p></span>
-          <span><p class="card-text"><span><img class="icon" src="{{url_for('static', filename='bath_icon.png') }}" /></span>{{property.numberofbathrooms}}</p></span>
-          <p class="card-text"><span><i class="bi bi-geo-alt"></i></span>{{property.location}}</p>
+          <h3 class="card-title">{{property.propertyTitle}}</h3>
+          <br>
+          
+          <span class="badge rounded-pill bg-primary"><p class="card-text">${{property.price}}.00</p></span>
+          <span class="badge rounded-pill bg-warning"><p class="card-text">{{property.propertyType}}</p></span>
+          <br>
+          <br>
+          <p class="card-text">Description: {{property.description}}</p>
+          <br>
+          <span><p class="card-text"><img class="icon" src="{{url_for('static', filename='bed_icon.png') }}" />{{property.numberofrooms}} Bed Rooms</p></span>
+          <span><p class="card-text"><span><img class="icon" src="{{url_for('static', filename='bath_icon.png') }}" /></span>{{property.numberofbathrooms}} Bathrooms</p></span>
+          <p class="card-text"><span><i class="bi bi-geo-alt"></i></span>Location: {{property.location}}</p>
           <a href="#" class="btn btn-primary">Email Realtor</a>
         </div>
       </div>
